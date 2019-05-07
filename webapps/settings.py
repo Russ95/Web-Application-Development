@@ -25,7 +25,7 @@ SECRET_KEY = 'xtl43=nh(z5a79&94xm@(0lm#*y7bff%sd=4#)s_bu0ylssqxd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.222.252.3', '172.31.37.163']
+ALLOWED_HOSTS = ['18.222.252.3', '172.31.37.163','127.0.0.1']
 
 
 # Application definition
