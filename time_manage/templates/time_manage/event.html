@@ -1,0 +1,44 @@
+{% extends 'time_manage/base.html' %}
+
+{% block title %}
+Event
+
+{% endblock %}
+
+{% block content %}
+<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+<script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/js/myAlert.js"></script>
+<div class="clearfix">
+  <a class="btn btn-info left" href="{% url 'time_manage:calendar' %}"><button>Back to Calendar</button>  </a>
+</div>
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                {{ field.label }} <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ field.label }} <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <table class="form form-table">
+    {{ form }}
+    <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
+  </table>
+</form>
+{% if event_id %}
+<a class="btn btn-info right" href="{% url 'time_manage:delete' event_id %}">
+    <button onClick="$.myConfirm({title:'确认框提示标题',message:'确认框提示内容',callback:function(){alert('callback')}})">delete</button><br/><br/>
+</a>
+
+{% endif %}
+{% endblock %}

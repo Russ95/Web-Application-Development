@@ -1,0 +1,128 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'cal/css/styles.css' %}">
+  <!-- <title>Django Calendar App</title> -->
+
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Free HTML5 Website Template by sc.chinaz.com" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="sc.chinaz.com" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/cal/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../../static/cal/css/open-iconic-bootstrap.min.css">
+    
+    <link rel="stylesheet" href="../../static/cal/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../static/cal/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../../static/cal/css/icomoon.css">
+    <link rel="stylesheet" href="../../static/cal/css/animate.css">
+    <link rel="stylesheet" href="../../static/cal/css/style.css">
+
+</head>
+<body>
+        <aside class="probootstrap-aside js-probootstrap-aside">
+                <a href="#" class="probootstrap-close-menu js-probootstrap-close-menu d-md-none"><span class="oi oi-arrow-left"></span> Close</a>
+                <div class="probootstrap-site-logo probootstrap-animate" data-animate-effect="fadeInLeft">
+                  
+                  <a href="{% url 'time_manage:home' %}" class="mb-2 d-block probootstrap-logo">{{msg}}</a>
+                  <!-- <p class="mb-0">Another free html5 bootstrap 4 template by <a href="https://sc.chinaz.com/" target="_blank">uiCookies</a></p> -->
+                </div>
+                <div class="probootstrap-overflow">
+                  <nav class="probootstrap-nav">
+                    <ul>
+                        <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:home' %}">Home</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:finished_event' %}">finished_event</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:current_day' %}">Today's Events</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:calendar' %}">Calendar</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:history' date %}">History</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:classifier' %}">Classifier</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:efficiency' %}">Efficiency Ranking</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:about' %}">About Us</a></li>
+            <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:logout' %}">Logout</a></li>
+                                </ul>
+                  </nav>
+                  <footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
+                    <!-- <ul class="list-unstyled d-flex probootstrap-aside-social">
+                      <li><a href="#" class="p-2"><span class="icon-twitter"></span></a></li>
+                      <li><a href="#" class="p-2"><span class="icon-instagram"></span></a></li>
+                      <li><a href="#" class="p-2"><span class="icon-dribbble"></span></a></li>
+                    </ul>
+                    <p>&copy; 2017 <a href="https://sc.chinaz.com/" target="_blank">sc.chinaz.com</a>. <br> All Rights Reserved.</p> -->
+                  </footer>
+                </div>
+              </aside>
+    <main role="main" class="probootstrap-main js-probootstrap-main">
+        <div class="probootstrap-bar">
+            <a href="#" class="probootstrap-toggle js-probootstrap-toggle"><span class="oi oi-menu"></span></a>
+            <div class="probootstrap-main-site-logo"><a href="index.html">Aside</a></a></div>
+        </div>          
+
+  <h1 class="title">Calendar</h1>
+  <hr>
+
+  <div class="clearfix">
+      <a class="btn btn-info left" href="{% url 'time_manage:calendar' %}?{{ prev_month }}"> Previous Month </a>
+      <a class="btn btn-info right" href="{% url 'time_manage:calendar' %}?{{ next_month }}"> Next Month </a>
+      <a class="btn btn-info right" href="{% url 'time_manage:event_new' %}"> New Event </a>
+  </div>
+  
+  <div>
+      
+      
+  </div>
+  
+  {{ calendar }}
+
+
+
+  <div class="container-fluid d-md-none">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="list-unstyled d-flex probootstrap-aside-social">
+              <li><a href="#" class="p-2"><span class="icon-twitter"></span></a></li>
+              <li><a href="#" class="p-2"><span class="icon-instagram"></span></a></li>
+              <li><a href="#" class="p-2"><span class="icon-dribbble"></span></a></li>
+            </ul>
+            <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+    <script src="../../static/js/jquery-3.2.1.slim.min.js"></script>
+    <!-- <script src="../../static/js/jquery-3.2.1.slim.min.js"></script> -->
+    <!-- <script src="js/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="../../static/js/popper.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/owl.carousel.min.js"></script>
+    <script src="../../static/js/jquery.waypoints.min.js"></script>
+    <script src="../../static/js/imagesloaded.pkgd.min.js"></script>
+
+    <script src="../../static/js/main.js"></script>
+</body>
+</html>

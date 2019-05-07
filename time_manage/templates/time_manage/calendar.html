@@ -1,0 +1,25 @@
+
+{% extends 'time_manage/base_1.html' %}
+{% block title %}
+Calendar
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<a href="{% url 'time_manage:home' %}"><button>back to home</button> </a>
+<div class="clearfix">
+	<a class="btn btn-info left" href="{% url 'time_manage:calendar' %}?{{ prev_month }}"> Previous Month </a>
+	<a class="btn btn-info right" href="{% url 'time_manage:calendar' %}?{{ next_month }}"> Next Month </a>
+	<a class="btn btn-info right" href="{% url 'time_manage:event_new' %}"> New Event </a>
+</div>
+
+<div>
+	
+	
+</div>
+
+{{ calendar }}
+{% endblock %}

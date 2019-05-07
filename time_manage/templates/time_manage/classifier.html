@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    {% load staticfiles %}
+    <link href="{% static 'monitor/graph.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/xrange.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <title>graph page</title>
+    <script src="{% static 'monitor/graph_plan.js' %}" type="text/javascript"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Free HTML5 Website Template by sc.chinaz.com" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="sc.chinaz.com" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/cal/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../../static/cal/css/open-iconic-bootstrap.min.css">
+    
+    <link rel="stylesheet" href="../../static/cal/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../static/cal/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../../static/cal/css/icomoon.css">
+    <link rel="stylesheet" href="../../static/cal/css/animate.css">
+    <link rel="stylesheet" href="../../static/cal/css/style.css">
+
+  </head>
+  <body>
+    
+    <aside class="probootstrap-aside js-probootstrap-aside">
+      <a href="#" class="probootstrap-close-menu js-probootstrap-close-menu d-md-none"><span class="oi oi-arrow-left"></span> Close</a>
+      <div class="probootstrap-site-logo probootstrap-animate" data-animate-effect="fadeInLeft">
+        
+        <a href="{% url 'time_manage:home' %}" class="mb-2 d-block probootstrap-logo">{{user}}</a>
+        <!-- <p class="mb-0">Another free html5 bootstrap 4 template by <a href="https://sc.chinaz.com/" target="_blank">uiCookies</a></p> -->
+      </div>
+      <div class="probootstrap-overflow">
+        <nav class="probootstrap-nav">
+          <ul>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:home' %}">Home</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:finished_event' %}">finished_event</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:current_day' %}">Today's Events</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:calendar' %}">Calendar</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:history' date %}">History</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:classifier' %}">Classifier</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:efficiency' %}">Efficiency Ranking</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:about' %}">About Us</a></li>
+              <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="{% url 'time_manage:logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+        <footer class="probootstrap-aside-footer probootstrap-animate" data-animate-effect="fadeInLeft">
+          <!-- <ul class="list-unstyled d-flex probootstrap-aside-social">
+            <li><a href="#" class="p-2"><span class="icon-twitter"></span></a></li>
+            <li><a href="#" class="p-2"><span class="icon-instagram"></span></a></li>
+            <li><a href="#" class="p-2"><span class="icon-dribbble"></span></a></li>
+          </ul> -->
+        </footer>
+      </div>
+    </aside>
+
+
+    <main role="main" class="probootstrap-main js-probootstrap-main">
+      <div class="probootstrap-bar">
+        <a href="#" class="probootstrap-toggle js-probootstrap-toggle"><span class="oi oi-menu"></span></a>
+        <div class="probootstrap-main-site-logo"><a href="index.html">Aside</a></a></div>
+      </div>
+
+<!-- <a href="{% url 'time_manage:calendar' %}"><button>click here to retrieve you calendar</button></a> -->
+
+<br>
+hi {{user}}!
+<br>
+here's your total monitored events list:
+<br>
+You can click on date on calendar page to see your feedback on that day.
+<br>
+<!-- items: {{items}} -->
+{% for item in items %}
+<br>
+<br>
+Monitored_action: {{item.process_name}}
+<br>
+category: {{item.type}}
+<br>
+set it to be:
+<a href="category/{{item.process_name}}/Software_Development">Software Development</a>
+&nbsp;&nbsp;<a href="category/{{item.process_name}}/Reference">Reference</a>
+&nbsp;&nbsp;<a href="category/{{item.process_name}}/Entertainment">Entertainment</a>
+&nbsp;&nbsp;<a href="category/{{item.process_name}}/Social">Social</a>
+&nbsp;&nbsp;<a href="category/{{item.process_name}}/Unknown">Unknown</a>
+<br>
+
+
+{% endfor %}
+
+      <!-- <div id="plancontainer"></div> -->
+
+      <div class="container-fluid d-md-none">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="list-unstyled d-flex probootstrap-aside-social">
+              <li><a href="#" class="p-2"><span class="icon-twitter"></span></a></li>
+              <li><a href="#" class="p-2"><span class="icon-instagram"></span></a></li>
+              <li><a href="#" class="p-2"><span class="icon-dribbble"></span></a></li>
+            </ul>
+            <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    
+    <script src="../../static/js/popper.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/owl.carousel.min.js"></script>
+    <script src="../../static/js/jquery.waypoints.min.js"></script>
+    <script src="../../static/js/imagesloaded.pkgd.min.js"></script>
+
+    <script src="../../static/js/main.js"></script>
+    
+  </body>
+</html>

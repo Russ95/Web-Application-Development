@@ -1,0 +1,22 @@
+{% extends "time_manage/base.html" %}
+
+{% block user-info %}
+    <div>
+        <a href="{% url 'time_manage:register' %}">
+            <button id="id_register_link">Register</button>
+        </a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <p>Login to the MicroBlog:</p>
+
+    <form method="post" action="{% url 'time_manage:login' %}">
+        <table>
+            {{form}}
+        </table>
+        {% csrf_token %}
+        <button type="submit" id="id_login_button">Submit</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "time_manage/base_in.html" %}
+
+
+{% block search-bar %}
+<!-- <a href="{% url 'time_manage:calendar' %}"><button>click here to retrieve you calendar</button></a> -->
+
+<br>
+hi {{msg}}!
+<br>
+here's your current event:
+<br>
+<!-- items: {{items}} -->
+{% for item in items %}
+title: {{item.title}}
+<br>
+description: {{item.description}}
+<br>
+start_time: {{item.start_time}}
+<br>
+end_time: {{item.end_time}}
+{% endfor %}
+{% endblock %}
